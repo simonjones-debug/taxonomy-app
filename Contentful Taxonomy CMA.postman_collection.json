@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "faba6f0f-2725-420a-82ee-522b167c60df",
+		"name": "Contentful Taxonomy CMA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1602387"
+	},
+	"item": [
+		{
+			"name": "GetAConcept",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concepts/curated",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concepts",
+						"curated"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAConceptScheme",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concept-schemes/travel",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concept-schemes",
+						"travel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetConcepts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concepts",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concepts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAConceptSchemes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concept-schemes/",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concept-schemes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetConceptDesc",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concepts/curated/descendants",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concepts",
+						"curated",
+						"descendants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetConceptAnc",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer ",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.contentful.management.v1+json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.contentful.com/organizations/4w07MOp6KuI5tMOVlD1Sy1/taxonomy/concepts/curated/ancestors",
+					"protocol": "https",
+					"host": [
+						"api",
+						"contentful",
+						"com"
+					],
+					"path": [
+						"organizations",
+						"4w07MOp6KuI5tMOVlD1Sy1",
+						"taxonomy",
+						"concepts",
+						"curated",
+						"ancestors"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
