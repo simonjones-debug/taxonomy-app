@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Taxonomy App
 
-## Getting Started
+A Next.js application for exploring and querying SKOS taxonomy data with Contentful integration.
 
-First, run the development server:
+## Features
+
+- **Taxonomy Exploration**: Browse and search through SKOS taxonomy concepts
+- **Related Content Discovery**: Find related concepts and their associated pages
+- **Contentful Integration**: Fetch pages associated with taxonomy nodes
+- **Repository Pattern**: Clean data access layer for taxonomy operations
+- **Strategy Pattern**: Flexible traversal strategies for different SKOS relationships
+
+## Architecture
+
+### Repository Pattern (`TaxonomyRepository`)
+
+The `TaxonomyRepository` class provides a clean interface for accessing taxonomy data:
+
+```typescript
+// Initialize the repository
+const repository = await TaxonomyRepository.loadFromFile()
+
+// Get taxonomy information
+const scheme = repository.getScheme()
+const allConcepts = repository.getAllConcepts()
+const concept = repository.getConceptById('concept-id')
+
+// Navigate relationships
+const children = repository.getChildrenOf('parent-id')
+const parents = repository.getParentsOf('child-id')
+```
+
+### Strategy Pattern (`ConceptTraversalStrategy`)
+
+The `ConceptTraversalStrategy` class implements different traversal strategies for SKOS relationships:
+
+```typescript
+// Create strategy with repository
+const strategy = new ConceptTraversalStrategy(repository)
+
+// Execute different traversal types
+const broader = strategy.execute(SKOSRelationshipType.BROADER, ['concept-id'])
+const narrower = strategy.execute(SKOSRelationshipType.NARROWER, ['concept-id'])
+const related = strategy.execute(SKOSRelationshipType.RELATED, ['concept-id'])
+
+// Get detailed mapping information
+const mappings = strategy.executeWithMapping(SKOSRelationshipType.RELATED, ['concept-id'])
+```
+
+## API Endpoints
+
+### `/api/taxonomy`
+Returns all available taxonomy node IDs.
+
+### `/api/pages?nodeId={nodeId}`
+Fetches pages from Contentful associated with a specific taxonomy node.
+
+### `/api/related-nodes?nodeId={nodeId}`
+Finds related concepts using the strategy pattern and returns their IDs.
+
+## Usage
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Production Build
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Taxonomy Data
 
-## Learn More
+Place your SKOS taxonomy JSON file at `public/taxonomy.json`. The file should follow this structure:
 
-To learn more about Next.js, take a look at the following resources:
+```json
+{
+  "scheme": {
+    "id": "scheme-id",
+    "name": "Scheme Name",
+    "topConceptIds": ["concept1", "concept2"]
+  },
+  "concepts": [
+    {
+      "id": "concept-id",
+      "label": "Concept Label",
+      "broader": ["parent-concept-id"],
+      "narrower": ["child-concept-id"],
+      "related": ["related-concept-id"]
+    }
+  ]
+}
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Implementation Details
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Repository Pattern Benefits
+- **Single Responsibility**: Repository handles only taxonomy data access
+- **Dependency Inversion**: Business logic depends on repository interface
+- **Testability**: Easy to mock repository for unit testing
+- **Singleton Pattern**: Ensures single instance of taxonomy data in memory
 
-## Deploy on Vercel
+### Strategy Pattern Benefits
+- **Open/Closed Principle**: Easy to add new traversal strategies
+- **Polymorphism**: Different strategies can be swapped at runtime
+- **Maintainability**: Each strategy encapsulates specific traversal logic
+- **Reusability**: Strategies can be used across different parts of the application
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### SKOS Relationship Types
+- **BROADER**: Find parent concepts (broader terms)
+- **NARROWER**: Find child concepts (narrower terms)  
+- **RELATED**: Find related concepts (related terms)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Environment Setup
+
+Ensure you have the following environment variables set for Contentful integration:
+
+```env
+CONTENTFUL_SPACE_ID=your_space_id
+CONTENTFUL_ACCESS_TOKEN=your_access_token
+```
+
+## Contributing
+
+1. Follow the existing patterns for repository and strategy implementations
+2. Add tests for new traversal strategies
+3. Update documentation for new features
+4. Ensure TypeScript types are properly defined

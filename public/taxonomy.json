@@ -1,0 +1,112 @@
+{
+  "scheme": {
+    "id": "navigation",
+    "name": "Navigation",
+    "topConceptIds": [
+      "academicPrograms"
+    ]
+  },
+  "concepts": [
+    {
+      "id": "design",
+      "label": "Design",
+      "broader": [
+        "academicPrograms"
+      ],
+      "narrower": [],
+      "related": []
+    },
+    {
+      "id": "engineering",
+      "label": "Engineering",
+      "broader": [
+        "academicPrograms"
+      ],
+      "narrower": [],
+      "related": []
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "broader": [
+        "academicPrograms"
+      ],
+      "narrower": [],
+      "related": []
+    },
+    {
+      "id": "uxDesign",
+      "label": "UX Design",
+      "broader": [
+        "design"
+      ],
+      "narrower": [],
+      "related": [
+        "tutoringLab"
+      ]
+    },
+    {
+      "id": "graphicDesign",
+      "label": "Graphic Design",
+      "broader": [
+        "design"
+      ],
+      "narrower": [],
+      "related": [
+        "tutoringLab"
+      ]
+    },
+    {
+      "id": "softwareEngineering",
+      "label": "Software Engineering",
+      "broader": [
+        "engineering"
+      ],
+      "narrower": [],
+      "related": [
+        "tutoringLab"
+      ]
+    },
+    {
+      "id": "civilEngineering",
+      "label": "Civil Engineering",
+      "broader": [
+        "engineering"
+      ],
+      "narrower": [],
+      "related": [
+        "tutoringLab"
+      ]
+    },
+    {
+      "id": "tutoringLab",
+      "label": "Tutoring Lab",
+      "broader": [
+        "services"
+      ],
+      "narrower": [],
+      "related": [
+        "softwareEngineering",
+        "civilEngineering",
+        "uxDesign",
+        "graphicDesign"
+      ]
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "broader": [
+        "services"
+      ],
+      "narrower": [],
+      "related": []
+    },
+    {
+      "id": "academicPrograms",
+      "label": "Academic Programs",
+      "broader": [],
+      "narrower": [],
+      "related": []
+    }
+  ]
+}
